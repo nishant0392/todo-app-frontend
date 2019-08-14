@@ -3,8 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.6.
 
 ## Technologies used:
-1. MEAN stack (MongoDB, Express, Angular 8 & Node.js) along with
-SOCKET.IO for real-time functionalities.
+1. Angular 8 along with SOCKET.IO for real-time functionalities.
 2. Bootstrap for responsive design.
 
 ## Features:
