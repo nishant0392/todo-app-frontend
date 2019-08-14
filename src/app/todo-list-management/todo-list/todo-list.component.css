@@ -1,0 +1,72 @@
+#list-name {
+    text-align: center;
+}
+
+#all-lists {
+    margin-top: 2.5em;
+    margin-bottom: 0.5em;
+    font-size: 1.8em;
+    text-align: center;
+    background-color: #17a2b8;
+    border-radius: 0.2em;
+    padding: 2px;
+}
+#all-lists i {
+    color: indianred;
+}
+#all-lists span {
+    display: inline-block;
+    padding : 5px;
+    border: 2px solid white;
+    border-radius: 0.2em;
+    margin: 5px 4px;
+    background-color: white;
+}
+.todo-inputbox {
+    border: 2px solid #17a2b8;
+    padding: 10px;
+}
+.todo-inputbox i {
+    font-size: 30px;
+    color: #17a2b8;
+    margin: 2px;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.todo-inputbox input {
+    width: 96%;
+    display: inline-block;
+}
+
+.content {
+    margin-top: 1em;
+}
+
+.pullright {
+    float: right;
+}
+
+/*** **** media queries *** ***/
+@media screen and (max-width: 1199px) {
+    .todo-inputbox input { width: 95%; }
+}
+@media screen and (max-width: 991px) {
+    .todo-inputbox input { width: 94%; }
+}
+@media screen and (max-width: 767px) {
+    .todo-inputbox input { width: 92%; }
+}
+@media screen and (max-width: 498px) {
+    .todo-inputbox input { width: 91%; }
+}
+@media screen and (max-width: 446px) {
+    .todo-inputbox input { width: 89%; }
+}
+@media screen and (max-width: 369px) {
+    .todo-inputbox input { width: 86%; }
+}
+
+
+
+

@@ -1,0 +1,19 @@
+<!-- =================================  Tree view  ======================================  -->
+<ul>
+    <li *ngFor="let node of treeData" class="todo-item">
+        <i class="{{node.done ? 'fas fa-check-circle':'far fa-circle'}}" (click)="toggleChecked(node)"></i>
+        <span class="task {{node.done ? 'line-through':''}}" (click)="toggleCollapse(node)">{{node.task}}</span>
+        <i class="add-subtask fas fa-plus-circle" title="Add subtask" (click)="toggleAddItem(node)"></i>
+        <i class="fas fa-edit" title="Edit this task" (click)="toggleEditItem(node)"></i>
+        <i class="fas fa-trash" title="Delete this task" (click)="deleteTodo(node)"></i>
+        <input #subTodo *ngIf="node.addItem" (keyup.enter)="addSubTodo(node, subTodo.value); subTodo.value='';"
+            type="text" class="form-control" placeholder="Add a subtask...">
+        <input #edit *ngIf="node.editItem" (keyup.enter)="editTodo(node, edit.value)" type="text" class="form-control"
+            placeholder="Edit this task..." value="{{node.task}}">
+        <div class="children" *ngIf="node.showChildren">
+            <app-todo-item [treeData]="node.children" [originalItems]="originalItems" [userId]="userId" [listName]="listName" *ngIf="node.children">
+            </app-todo-item>
+        </div>
+    </li>
+</ul>
+<!-- ==================================  Tree view  ======================================  -->

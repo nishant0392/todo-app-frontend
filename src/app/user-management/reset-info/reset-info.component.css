@@ -1,0 +1,23 @@
+.container-fluid { 
+   background-color: #343a40;
+   color: white;
+   height: 100%;
+   min-height: 100vh;
+}
+
+.reset-password {
+   margin-top: 10em;
+   padding: 3em 3em;
+   border: 1px solid white;
+   background-color: #17a2b8;
+   border-radius: 0.5em;
+}
+
+/*** **** Media queries *** ***/
+@media screen and (max-width: 600px) {
+   .reset-password { 
+      padding: 3em 1em;
+      width: 80%;
+      margin-top: 8em;
+   }
+}

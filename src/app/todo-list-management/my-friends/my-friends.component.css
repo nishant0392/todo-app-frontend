@@ -1,0 +1,50 @@
+h2 {
+    color: indianred;
+    margin-top: .8rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.card {
+    margin: 1rem;
+    display: inline-block;
+    width: 13rem;
+    border-color: #17a2b8;
+}
+
+.card img {
+    margin: 0.5rem 2rem 0.5rem 2rem;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+
+.card-body {
+    text-align: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.card-body p {
+    color: #343a40;
+    font-weight: 600;
+}
+
+#my-friends .card-body a {
+    color: white;
+    cursor: pointer;
+    margin-bottom: .2rem;
+    display: block;
+}
+
+.empty-list {
+    text-align: center;
+ }
+ .empty-list h4{
+     padding: 8px;
+     color: white;
+     border-radius: .2em;
+     display: inline;
+     background-color: #17a2b8;
+ }

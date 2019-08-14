@@ -1,0 +1,88 @@
+<div class="container-fluid">
+
+    <!-----  ========================    START:  Navigation Bar    ========================  ----->
+    <nav class="row navbar navbar-expand-sm navbar-light bg-info">
+
+        <a class="navbar-brand" href="#">
+            <img src="../../../assets/images/Nishant.JPG" width="30" height="30" class="d-inline-block align-top"
+                alt="">NISHANT</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/']">Home <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/login']">Sign In</a>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+    <!-----  ========================    END:  Navigation Bar    ========================  ----->
+
+    <!-----  ===============================   START:  Content   ===============================  ----->
+    <div class="row justify-content-center" id="content">
+        <form>
+            <div class="text-center">
+                <h2>Sign Up</h2>
+                <p><small>Please fill in this form to create an account.</small></p>
+            </div>
+            <div class="form-group">
+                <label for="firstName">First name</label>
+                <input type="text" class="form-control" id="firstName" placeholder="First name" [(ngModel)]="firstName"
+                    [ngModelOptions]="{standalone: true}" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last name</label>
+                <input type="text" class="form-control" id="lastName" placeholder="Last name" [(ngModel)]="lastName"
+                    [ngModelOptions]="{standalone: true}" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile number</label>
+                <div class="input-group mb-3">
+                    <select class="custom-select" id="country-select" onchange="autoFill()">
+                        <option id="select-country-message" value="" selected> &nbsp;-------- Select Your Country
+                            --------
+                        </option>
+                        <option value="91">&nbsp;India</option>
+                        <option value="44">&nbsp;UK</option>
+                        <option value="1">&nbsp;USA</option>
+                        <optgroup></optgroup>
+                        <optgroup label="All countries">
+                            <option *ngFor="let country of countryNames | keyvalue" [id]="country.key"
+                                [value]="countryCodes[country.key]"> &nbsp;
+                                {{country.value}}</option>
+                        </optgroup>
+                    </select>
+                    <div>
+                        <input #saviour type="text" class="form-control" id="country-code" placeholder="Code"
+                            [(ngModel)]="countryCode" name="countryCode" disabled required>
+                        <input type="number" class="form-control" id="mobile" placeholder="Mobile number"
+                            [(ngModel)]="mobileNumber" [ngModelOptions]="{standalone: true}" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="Email address" [(ngModel)]="email"
+                    [ngModelOptions]="{standalone: true}" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="password"
+                    [ngModelOptions]="{standalone: true}" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" (click)="signupFunc(saviour.value)">Sign Up</button>
+        </form>
+    </div>
+
+    <!-----  ===============================    END:  Content   ===============================  ----->
+
+</div>

@@ -1,0 +1,36 @@
+/** Todo list view   **/
+.todo-item {
+    font-size: 20px;
+    padding: 3px;
+    border: 1px solid #668964;
+}
+
+.todo-item .fa-check-circle {
+    color: green;
+    font-size: 22px;
+    position: relative;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.todo-item .fa-circle {
+    font-size: 22px;
+    position: relative;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.todo-item .fa-trash,.fa-plus-circle,.fa-edit { 
+    float: right;
+    margin: 5px;
+    cursor: pointer;
+}
+.fa-plus-circle { color: #17a2b8; }
+.fa-trash { color: gray; }
+.fa-edit { color: indianred; }
+.todo-item span,.fa-circle,.fa-check-circle:hover {
+    cursor: pointer;
+}
+ 
+.line-through {
+    text-decoration: line-through;
+}
+
