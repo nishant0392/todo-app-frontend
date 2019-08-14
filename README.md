@@ -17,3 +17,6 @@ operations on his lists.
 5. User stays updated about everything related to his lists in case it has been
 modified by his friend(s) in Real-Time.
 
+## Backend available at:
+https://github.com/nishant0392/todo-app-backend/
+
