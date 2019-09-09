@@ -1,27 +1,22 @@
-# TodoFrontend
+# Todo Web App Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.6.
 
-## Development server
+## Technologies used:
+1. Angular 8 along with SOCKET.IO for real-time functionalities.
+2. Bootstrap for responsive design.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Features:
+1. User can create a list in a tree-like structure, as in a filesystem and can have
+multiple lists.
+2. User can perform the basic CRUD operations like add, edit, delete on any
+task/subtask.
+3. User can invite a friend.
+4. User’s friends can view his lists and also perform add, edit or delete
+operations on his lists.
+5. User stays updated about everything related to his lists in case it has been
+modified by his friend(s) in Real-Time.
 
-## Code scaffolding
+## Backend available at:
+https://github.com/nishant0392/todo-app-backend/
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
