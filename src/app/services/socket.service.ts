@@ -4,6 +4,7 @@ import * as io from 'socket.io-client';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { CookieService } from 'ngx-cookie';
+import { UserManagementService } from './user-management.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,9 @@ export class SocketService {
 
 
   constructor(public http: HttpClient,
-    public cookie: CookieService) {
+    public cookie: CookieService,
+    public userManagamentService: UserManagementService) {
+
     // Connection is being created (HTTP Handshake happens)
     this.socket = io(this.url);
     this.listenToOwnId();
@@ -154,5 +157,23 @@ export class SocketService {
 
     return this.http.post(`${this.url}/api/v1/users/account/delete`, params);
   }
+
+  /* Get User Avatar 
+  public getAvatar(userId) {
+  
+    this.userManagamentService.getAvatar(this.userId)
+    .subscribe((apiResponse: any) => {
+      console.log('apiResponse:', apiResponse)
+      if(apiResponse.status === 200) {
+        this.toastr.success('Image Uploaded Successfully !!');
+        setTimeout(() => { this.router.navigate(['/login']); }, 1000);
+      }
+
+      else {
+        this.toastr.error(apiResponse.message);
+      }
+    })
+  
+  } // END uploadAvatar() */
 
 } // THE END

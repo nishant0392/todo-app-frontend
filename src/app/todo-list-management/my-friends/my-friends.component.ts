@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { SocketService } from 'src/app/services/socket.service';
 import { Subscription } from 'rxjs';
+import { UserManagementService } from 'src/app/services/user-management.service';
 
 @Component({
   selector: 'app-my-friends',
@@ -16,12 +17,14 @@ export class MyFriendsComponent implements OnInit, OnDestroy {
   public userName: string;
   public authToken: string;
   public friendsList: Object[];
+  public baseUrl: string;
 
   private subscription: Subscription;
 
   constructor(private cookie: CookieService,
     private toastr: ToastrService,
     private socketService: SocketService,
+    private userManagementService: UserManagementService,
     private router: Router) { }
 
   ngOnInit() {
@@ -29,6 +32,7 @@ export class MyFriendsComponent implements OnInit, OnDestroy {
     this.userName = this.cookie.get('userName');
     this.authToken = this.cookie.get('authToken');
     this.friendsList = [];
+    this.baseUrl = this.userManagementService.baseUrl;
 
     this.checkStatus();
     this.getAllFriends();
@@ -96,8 +100,17 @@ export class MyFriendsComponent implements OnInit, OnDestroy {
   public getAllFriends() {
     this.socketService.getAllFriends(this.authToken, this.userId)
       .subscribe((apiResponse) => {
-        if (apiResponse.status === 200)
+        if (apiResponse.status === 200) {
+          console.log(apiResponse)
           this.friendsList = apiResponse.data;
+
+          this.userManagementService.getAvatarsById(JSON.stringify(apiResponse.data))
+            .subscribe((apiResponse2: any) => {
+              console.log(apiResponse2)
+              this.friendsList = apiResponse2.data;
+            })
+        }
+          
         else if (apiResponse.status === 404)
           console.log(apiResponse.message)
         else

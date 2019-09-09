@@ -6,6 +6,7 @@ import { UserManagementService } from 'src/app/services/user-management.service'
 // importing JSON files for country names and codes
 import countryNames from '../../../assets/json/countryNames.json';
 import countryCodes from '../../../assets/json/countryCodes.json';
+import { CookieService } from 'ngx-cookie';
 
 @Component({
   selector: 'app-signup',
@@ -26,9 +27,12 @@ export class SignupComponent implements OnInit {
 
   constructor(private toastr: ToastrService,
     private appService: UserManagementService,
-    private router: Router) { }
+    private router: Router,
+    private cookie: CookieService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.countryCode = "91";
+   }
 
   public signupFunc(country_code) {
     this.countryCode = country_code;
@@ -63,8 +67,8 @@ export class SignupComponent implements OnInit {
           console.log(response);
           if (response.status === 200) {
             this.toastr.success('Signup successful');
-
-            setTimeout(() => { this.router.navigate(['/login']); }, 2000);
+            this.cookie.put('userId', response.data.userId);
+            setTimeout(() => { this.router.navigate(['/uploadAvatar']); }, 1000);
           }
 
           else

@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { SocketService } from 'src/app/services/socket.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { UserManagementService } from 'src/app/services/user-management.service';
 
 
 
@@ -21,10 +22,12 @@ export class InviteFriendsComponent implements OnInit, AfterContentInit, OnDestr
   public usersList: Object[];
   public addFriendList: Object[];
   public requestsList: Object[];
+  public baseUrl: string;
 
   private subscription: Subscription;
 
   constructor(private socketService: SocketService,
+    private userManagementService: UserManagementService,
     private cookie: CookieService,
     private toastr: ToastrService,
     private router: Router) { }
@@ -35,6 +38,7 @@ export class InviteFriendsComponent implements OnInit, AfterContentInit, OnDestr
     this.userName = this.cookie.get('userName');
     this.addFriendList = [];
     this.requestsList = [];
+    this.baseUrl = this.userManagementService.baseUrl;
 
     this.checkStatus();
     this.verifyUserConfirmation();
@@ -84,20 +88,24 @@ export class InviteFriendsComponent implements OnInit, AfterContentInit, OnDestr
     
         if (data.opcode === 'REQUEST') {
           this.toastr.info(data.senderName, 'New Friend Request:')
+
           setTimeout(() => { this.getAllRequests(); }, 1000)
         }
         else if (data.opcode === 'ACCEPTED') {
           this.toastr.success(data.receiverName, 'You are now a FRIEND to:')
+
           // Update Find Friends List
           setTimeout(() => { this.getAllNonFriends(); }, 1000)
         }
         else if (data.opcode === 'REJECTED') {
           this.toastr.info(data.receiverName, 'Friend Request rejected by:')
+
           // Update Find Friends List
           setTimeout(() => { this.getAllNonFriends(); }, 1000)
         }
         else if (data.opcode === 'REMOVED') {
           this.toastr.info(data.friendName, 'You have been removed by your friend:');
+
           // Update Find Friends List
           setTimeout(() => { this.getAllNonFriends(); }, 1000)
         }
@@ -155,6 +163,7 @@ export class InviteFriendsComponent implements OnInit, AfterContentInit, OnDestr
         else
           this.toastr.error(apiResponse.message)
       })
+      
   } // END acceptOrRejectRequest()
 
 
@@ -162,12 +171,12 @@ export class InviteFriendsComponent implements OnInit, AfterContentInit, OnDestr
   public getAllNonFriends() {
     this.socketService.getAllNonFriends(this.authToken, this.userId)
       .subscribe((apiResponse) => {
-        if (apiResponse.data)
-          this.addFriendList = apiResponse.data;
-        else {
-          console.log(apiResponse)
+        console.log(apiResponse)
+
+        if (apiResponse.data) 
+          this.addFriendList = apiResponse.data;  
+        else  
           this.toastr.error(apiResponse.message);
-        }
       })
   }
 
@@ -175,8 +184,17 @@ export class InviteFriendsComponent implements OnInit, AfterContentInit, OnDestr
   public getAllRequests() {
     this.socketService.getAllRequests(this.authToken, this.userId)
       .subscribe((apiResponse: any) => {
-        if (apiResponse.status === 200)
+
+        if (apiResponse.status === 200) {
+          console.log(apiResponse)
           this.requestsList = apiResponse.data;
+
+          this.userManagementService.getAvatarsById(JSON.stringify(apiResponse.data))
+            .subscribe((apiResponse2: any) => {
+              this.requestsList = apiResponse2.data;
+            })
+        }
+          
         else if (apiResponse.status === 404)
           this.requestsList = [];
         else {

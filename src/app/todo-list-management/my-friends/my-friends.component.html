@@ -39,14 +39,15 @@
         <div class="row justify-content-center">
             <!--------------------------------         START: CARD VIEW       ----------------------------->
             <div class="card" *ngFor="let friend of friendsList">
-                <img class="card-img-top" src="../../../assets/images/Humongosaur.JPG" alt="Avatar">
-                <div class="card-body">
+                <img *ngIf="!friend.avatarPath" class="card-img-top" src="../../../assets/images/Humongosaur.JPG"  alt="Avatar">
+                <img *ngIf="friend.avatarPath" class="card-img-top" src="{{baseUrl}}/{{friend.avatarPath}}" alt="Avatar">
+                    <div class="card-body">
                     <p class="card-title">{{friend.friendName}}</p>
                     <a (click)="showFriendItems(friend.friendId, friend.friendName)" class="btn btn-primary"><i
                             class="fas fa-tv"></i> Show Tasks</a>
                     <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i
                             class="fas fa-user-times"></i> Remove Friend</a>
-                </div>
+            </div>
 
                 <!--------------------         START: MODAL         ------------------->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"

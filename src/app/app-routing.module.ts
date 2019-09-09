@@ -13,6 +13,7 @@ import { TodoListComponent } from './todo-list-management/todo-list/todo-list.co
 import { TodoItemComponent } from './todo-list-management/todo-item/todo-item.component';
 import { InviteFriendsComponent } from './todo-list-management/invite-friends/invite-friends.component';
 import { MyFriendsComponent } from './todo-list-management/my-friends/my-friends.component';
+import { UploadAvatarComponent } from './user-management/upload-avatar/upload-avatar.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'reset-info', component: ResetInfoComponent },
   { path: 'reset-password/:id/:token', component: ResetPasswordComponent },
+  { path: 'uploadAvatar', component: UploadAvatarComponent },
   { path: 'todo', component: TodoListComponent },
   { path: 'todo-item', component: TodoItemComponent },
   { path: 'invite-friend', component: InviteFriendsComponent },

@@ -12,6 +12,7 @@ import { ResetInfoComponent } from './reset-info/reset-info.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { SignOutComponent } from './sign-out/sign-out.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { UploadAvatarComponent } from './upload-avatar/upload-avatar.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ResetInfoComponent,
     ResetPasswordComponent,
     SignOutComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    UploadAvatarComponent
   ],
   imports: [
     CommonModule,
